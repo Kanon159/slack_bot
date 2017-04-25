@@ -41,6 +41,8 @@ EM.run do
     data = JSON.parse(event.data)
     p [:message, data]
 
+    # bot 機能
+    # 会話
     if data['text'] == 'こんにちは'
       ws.send({
         type: 'message',
@@ -57,14 +59,6 @@ EM.run do
       }.to_json)
     end   # ping
 
-    # おふざけ
-    if data['type'] == 'user_typing' && data['channel'] == 'C539B7WJU'
-      ws.send({
-        type: 'message',
-        text: "<@#{data['user']}>!! きさま!！入力しているなッ!!!!",
-        channel: data['channel']
-      }.to_json)
-    end   # おふざけ
 
     # おふざけ
     if data['type'] == 'user_typing' && data['channel'] == 'C539B7WJU'
@@ -75,7 +69,8 @@ EM.run do
       }.to_json)
     end   # おふざけ
 
-    ## ユーザージョイン
+
+    # ユーザの入室確認
     if data['channel'] == 'C50K418NT' && data['subtype'] == 'channel_join'
       ws.send({
         type: 'message',
@@ -89,7 +84,6 @@ EM.run do
         channel: data['channel']
       }.to_json)
     end   # Joinのif
-  
   end     # event確認
 
 
