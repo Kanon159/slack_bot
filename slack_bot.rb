@@ -77,7 +77,7 @@ EM.run do
         text: "初めまして。<@#{data['user']}>さん。slackが初めての方は説明書をどうぞ。\nhttps://files.slack.com/files-pri/T4ZVB4Y8L-F53SJEHEF/slack__________________.pdf",
         channel: data['channel']
       }.to_json)
-    elsif data['subtype'] == 'channel_join'
+    elsif data['subtype'] == 'channel_join' && data['channel'] != 'C4Z7Q5B0Q'
       ws.send({
         type: 'message',
         text: "こんにちは。<@#{data['user']}>さん。ここは<##{data['channel']}>です",
